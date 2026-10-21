@@ -1,0 +1,18 @@
+{
+    "productionIOS": {
+        "requiredVersion": "1.0.9",
+        "link": "https://apps.apple.com/us/app/feral-file-controller/id6755812386"
+    },
+    "devIOS": {
+        "requiredVersion": "0.0.0",
+        "link": "https://apps.apple.com/us/app/feral-file-controller/id6755812386"
+    },
+    "productionAndroid": {
+        "requiredVersion": "1.0.9",
+        "link": "https://play.google.com/store/apps/details?id=com.feralfile.app"
+    },
+    "devAndroid": {
+        "requiredVersion": "0.0.0",
+        "link": "https://install.appcenter.ms/orgs/support-zzd0-28/apps/autonomy-android-1/distribution_groups/bitmark%20internal%20testers"
+    }
+}

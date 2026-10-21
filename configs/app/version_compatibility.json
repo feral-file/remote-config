@@ -1,0 +1,45 @@
+{
+  "release": {
+    "0.0.4": {
+      "min_android_version": "0.59.16(524)",
+      "min_ios_version": "0.59.16(1)",
+      "max_android_version": "0.59.16(524)",
+      "max_ios_version": "0.59.16(1)"
+    },
+    "0.3.0": {
+      "min_android_version": "0.62.0(561)",
+      "min_ios_version": "0.62.0(1)"
+    },
+    "0.4.0": {
+      "min_android_version": "0.62.0(561)",
+      "min_ios_version": "0.62.0(1)",
+      "max_android_version": "0.62.2(575)",
+      "max_ios_version": "0.62.2(5)"
+    },
+    "0.8.0": {
+        "min_android_version": "0.63.0(604)",
+        "min_ios_version": "0.63.0(9)"
+    },
+    "0.15.0": {
+      "min_android_version": "0.66.8.0(675)",
+      "min_ios_version": "0.66.8(2)"
+    }
+  },
+  "demo": {
+    "0.0.5": {
+      "min_android_version": "0.59.17(552)",
+      "min_ios_version": "0.59.17(6)"
+    },
+    "0.0.6": {
+      "min_android_version": "0.59.17(557)",
+      "min_ios_version": "0.59.17(16)"
+    },
+    "0.3.0": {
+      "min_android_version": "0.62.0(561)",
+      "min_ios_version": "0.62.0(1)"
+    },
+    "0.5.0": {
+      "min_android_version": "0.62.2(565)"
+    }
+  }
+}
