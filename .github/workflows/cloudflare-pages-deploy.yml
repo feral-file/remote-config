@@ -45,11 +45,12 @@ jobs:
         run: |
           set -euo pipefail
 
-          for file in configs/*.json; do
+          shopt -s globstar
+          for file in configs/**/*.json; do
             jq empty "$file"
           done
 
-          for file in configs/*.json; do
+          for file in configs/**/*.json; do
             if jq -e 'has("dpVersion")' "$file" >/dev/null; then
               npx --yes @feralfile/cli@2.10.0 verify "$file"
             fi

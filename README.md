@@ -1,21 +1,25 @@
-# ff-app-docs
+# remote-config
 
-Documentation and **remote configuration** for the Feral File mobile app (`ff-app`). This repository replaces the mobile-specific config slice that previously lived under [`bitmark-inc/feral-file-docs`](https://github.com/bitmark-inc/feral-file-docs), so updates can be owned and reviewed in the **feral-file** organization.
+Settings the Feral File app and every FF1 download while they run. Nothing here is documentation: words people read live in `feral-file/ff3` (feralfile.com, the app's license agreement and privacy policy included) and `feral-file/docs` (docs.feralfile.com).
 
-## What ships here
+## What is here and who reads it
 
-| Path | Purpose |
-|------|--------|
-| `configs/ff-app.json` | Remote config consumed by the app at runtime (feed operators, feature flags, and related settings). The client loads this file as **`ff-app.json`** from the deployed static host. |
+| Path | What it is | Read by |
+|------|------------|---------|
+| `configs/ff-app.json` | The app's remote config: feed operators, feature flags, related settings | The app, from the Cloudflare Pages host (`https://ff-app-docs.pages.dev/ff-app.json`) |
+| `configs/daily-recovery-2026-09-10.json` | Daily's temporary playlist (below) | The app, through `ff-app.json` |
+| `configs/display.json` | The FF1 player's default playlist and its duration | Every FF1, at `https://raw.githubusercontent.com/feral-file/remote-config/main/configs/display.json`, once FF OS builds carry that address (`PUB_DOC_URL`, a variable in `feral-file/ffos`). Until then FF1s read the copy in `feral-file/feral-file-docs`, and an edit goes to both. |
+| `configs/app/` | `versions.json`, `version_compatibility.json` (which app and FF OS versions work together), `apple_model_identifier.json` | The app's version and FF1-compatibility checks, from the first release that reads them here. App 1.8.33 and older read the copies on `feral-file/feral-file-docs`' `master` branch, and an edit goes to both. |
+| `agreements/` | The app's license agreement and privacy policy | App 1.8.33 and older. The text is edited in `feral-file/ff3` (`data/content/legal/app-eula.md`, `app-privacy-policy.md`); later releases show those pages, and a change is copied here while the older installs remain. |
 
-Before each deploy, CI parses every JSON config and verifies every signed DP-1
+Before each deploy, CI parses every JSON file under `configs/` and verifies every signed DP-1
 playlist with the pinned `@feralfile/cli` release. It then writes
 `configs/version.json` with the Git commit and deployment environment so you can
 tell which revision is live.
 
 ## Deployment
 
-GitHub Actions deploys the **`configs/`** directory to **Cloudflare Pages** when you push to **`main`** or **`dev`**, or when you run the workflow manually.
+GitHub Actions deploys the **`configs/`** directory to **Cloudflare Pages** when you push to **`main`** or **`dev`**, or when you run the workflow manually. The Pages project keeps its name, so the host stays `ff-app-docs.pages.dev`.
 
 - **`main`** → Production environment (default for `workflow_dispatch` when not specified inline).
 - **`dev`** → Development environment.
@@ -34,14 +38,12 @@ The workflow is defined in `.github/workflows/cloudflare-pages-deploy.yml`.
 
 ## Impact on production
 
-Changes merged to the deployment branch you use for production (`main` by convention) affect **live app behavior** after clients refresh remote config. Coordinate with the mobile team before altering operator lists or behavioral flags.
+A merge to `main` changes what the app and every FF1 read. `ff-app.json` changes live app behavior after clients refresh remote config; `display.json` changes the default playlist on every FF1; `configs/app/` decides which app and FF OS versions are told to update. Coordinate with the mobile team before altering operator lists or behavioral flags.
 
 ## Maintenance
 
-- Edit `configs/ff-app.json` in a branch, open a PR, merge when reviewed.
+- Edit a file in a branch, open a PR, merge when reviewed.
 - After deploy, confirm the Pages URL serves `ff-app.json` and optional `version.json` as expected.
-
-For broader Feral File documentation (agreements, web, TV, learning content), continue using the shared docs repository under Bitmark Inc. where those assets are still maintained.
 
 ## Temporary Daily recovery — September 10, 2026
 
