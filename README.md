@@ -62,3 +62,9 @@ The extended document was signed by the Feral File curator wallet (`did:pkh:eip1
 ### Re-signing — September 24, 2026
 
 The September 24 artwork CDN URL update changed 76 item sources and invalidated the previous signatures. The edited 106-item playlist was signed in the Publisher and published as `https://feed.feralfile.com/api/v1/playlists/feral-file-daily-temporary-recovery-7f3c0f4e` (playlist id `7f3c0f4e-84d3-4206-ac36-fe073e11fbb9`, curator wallet `did:pkh:eip155:1:0xE02BDdd66c0dbFc132e95620089a02cEddAaF2cf`). The file at `configs/daily-recovery-2026-09-10.json` now contains the signed feed response; its 106 items match the edited version exactly. The static URL used by clients remains the same. For later edits, publish the updated document and copy the signed feed response here before deploying.
+
+### Rebuild and re-signing — October 23, 2026
+
+The 30 entries appended on September 15 (October 17 through November 15) were copied before the feed added manifest thumbnails, so none of them carried a thumbnail or an on-chain provenance and the app rendered "No thumbnail" for every one whose source has no image extension (`feral-file/ff-app#1142`). Each of those entries now takes its body verbatim from the current feed item with the same `source` — `node-occupy-cf499e88`, `refik-moma-dreams-f580d1c1`, `refik-coral-b4d72428`, `refik-moma-burned-fd1d00b9` — keeping only its own `id`, `slug` and `displayAt`. That brings manifest thumbnails to the OCCUPY, Dreams and Coral entries and on-chain provenance to the Burned entries, which the app enriches from the indexer. The other 76 entries are unchanged.
+
+This version was not published to the feed. It was signed fresh (`ff-cli sign -r curator --replace-signatures`, `did:key:z6Mkn7RkgQShT8CTKC6RBEaBt8iWXNgLUREbGgWTSomBhFkD`), which drops the previous curator and feed signatures; CI's `@feralfile/cli` verify accepts it.
