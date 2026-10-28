@@ -16,7 +16,11 @@
     "browser_pairing": {
       "min_ffos_version": "1.0.19",
       "keep_paired_min_ffos_version": "2.0.6",
-      "site_join_min_ffos_version": "2.0.10"
+      "site_join_min_ffos_version": "2.0.10",
+      "display_grants_min_ffos_version": "2.0.12"
+    },
+    "secure_control": {
+      "min_ffos_version": "2.0.12"
     }
   },
   "logging": {
