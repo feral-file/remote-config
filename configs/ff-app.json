@@ -10,7 +10,7 @@
     }
   },
   "daily": {
-    "playlist_url": "https://ff-app-docs.pages.dev/daily-recovery-2026-09-10.json"
+    "playlist_url": "https://feed.feralfile.com/api/v1/playlists/7043bb2e-ad00-4a1e-81c2-2ce2398d3f12"
   },
   "features": {
     "browser_pairing": {
